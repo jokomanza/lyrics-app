@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 require 'vendor/autoload.php';
 
 
@@ -46,8 +46,8 @@ $result = json_decode($lyric);
 
 $lyrics =  base64_decode($result->lyric);
 // header('Content-Type: application/json; charset=utf-8');
-echo $lyrics;
-die;
+//echo "<pre>$lyrics</pre>";
+//die;
 ?>
 
 <!doctype html>
@@ -58,7 +58,7 @@ die;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Lyrics Api</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
@@ -73,7 +73,6 @@ die;
     </nav>
 
     <div class="container-sm">
-        <h1>Hello, world!</h1>
         <?php
         foreach ($result->data->song->list as $data) {
             $singer = $data->singer[0]->name;
@@ -86,9 +85,9 @@ die;
 
         ?>
         <button id="copyButton" onclick="myCopyFunction()">Copy Lyrics</button>
-        <p id="theList">
+        <pre id="theList">
             <?PHP echo trim($lyrics); ?>
-        </p>
+        </pre>
     </div>
 
     <script>

@@ -1,3 +1,7 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +41,8 @@
             const response = await fetch('Api.php?song=' + document.getElementById('inputTitle').value);
             const json = await response.json(); //extract JSON from the http response
             console.log(json)
-            $(".main").empty();
-            var newHTML = "";
-            for (var i = 0; i < json; i++) {
-
-            }
-            newHTML += "hellow";
             // document.getElementById("main").textContent = JSON.stringify(json.data.song.list, undefined, 2);
-            document.getElementById("result").innerText = response;
+            //document.getElementById("result").innerText = response;
             //Refresh your control,eg if it is a listview
             //$('#favorite-table-id').listview('refresh');
         }
